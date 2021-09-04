@@ -1,0 +1,28 @@
+---
+- hosts: all
+  tasks:
+    - name: Install VIM
+      apt:
+        name: vim
+        state: present
+    
+    - name: Install Git
+      apt:
+        name: git
+        state: present
+        
+    - name: Install dos2unix
+      apt:
+        name: dos2unix
+        state: present
+        
+    - name: Install software-properties-common
+      apt:
+        name: software-properties-common
+        state: present
+        
+    - name: Install Python 3
+      apt: 
+        name: python3
+        state: present
+

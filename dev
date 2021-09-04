@@ -1,0 +1,4 @@
+# Default development machine configuration
+[all]
+localhost ansible_connection=local
+    
