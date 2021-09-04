@@ -25,15 +25,23 @@
       apt: 
         name: python3
         state: present
+       
+    - name: Check if Spotify Installed
+      stat:
+        path: /etc/apt/sources.list.d/spotify.list
+      register: spotify_result
         
     - name: Add Spotify Public Key
       raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
+      when: not spotify_result.stat.exists
 
     - name: Add Spotify as apt source
       raw: echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
+      when: not spotify_result.stat.exists
       
     - name: Apt Update
       raw: apt update -y || true
+      when: not spotify_result.stat.exists
     
     - name: Install Spotify
       apt:
