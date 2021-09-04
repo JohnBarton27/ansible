@@ -5,23 +5,25 @@
       package_facts:
         manager: apt
         
-    - name: Add Spotify Public Key
-      raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
-      when: '"spotify-client" not in ansible_facts.packages'
-
-    - name: Add Spotify as apt source
-      raw: echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
-      when: '"spotify-client" not in ansible_facts.packages'
+      # ENPASS
+    - name: Add Enpass repo
+      raw: echo "deb https://apt.enpass.io/ stable main" > /etc/apt/sources.list.d/enpass.list
+      when: '"enpass" not in ansible_facts.packages'
+        
+    - name: Import Enpass Key
+      raw: wget -O - https://apt.enpass.io/keys/enpass-linux.key | tee /etc/apt/trusted.gpg.d/enpass.asc
+      when: '"enpass" not in ansible_facts.packages'
       
-    - name: Apt Update
+    - name: Apt Update (Enpass)
       raw: apt update -y || true
-      when: '"spotify-client" not in ansible_facts.packages'
-    
-    - name: Install Spotify
+      when: '"enpass" not in ansible_facts.packages'
+ 
+    - name: Install Enpass
       apt:
-        name: spotify-client
+        name: enpass
         state: present
         
+      # STEAM
     - name: Download Steam Installer
       get_url:
         url: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
@@ -39,3 +41,20 @@
         state: absent
       when: '"steam-launcher" not in ansible_facts.packages'
 
+      # SPOTIFY
+    - name: Add Spotify Public Key
+      raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
+      when: '"spotify-client" not in ansible_facts.packages'
+
+    - name: Add Spotify as apt source
+      raw: echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
+      when: '"spotify-client" not in ansible_facts.packages'
+      
+    - name: Apt Update (Spotify)
+      raw: apt update -y || true
+      when: '"spotify-client" not in ansible_facts.packages'
+    
+    - name: Install Spotify
+      apt:
+        name: spotify-client
+        state: present
