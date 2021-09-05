@@ -41,6 +41,14 @@
         state: absent
       when: '"steam-launcher" not in ansible_facts.packages'
 
+
+    - name: Install Steam Deps
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - steam-libs-amd64
+    
       # SPOTIFY
     - name: Add Spotify Public Key
       raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
