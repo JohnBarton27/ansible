@@ -59,7 +59,6 @@
         state: absent
       when: '"steam-launcher" not in ansible_facts.packages'
 
-
     - name: Install Steam Deps
       apt:
         name: "{{ item }}"
