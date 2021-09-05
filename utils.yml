@@ -26,11 +26,8 @@
         name: python3
         state: present
         
-    - name: Install Grub
+    - name: Install snap
       apt:
-        name: "{{ item }}"
+        name: snapd
         state: present
-      loop:
-        - grub-efi
-        - grub2-common
-        - grub-customizer
+
