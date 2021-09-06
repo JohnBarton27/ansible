@@ -35,4 +35,8 @@
       apt:
         name: pip
         state: present
+        
+    - name: Install Starship
+      snap:
+        name: starship
 
