@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Gather package facts
+      package_facts:
+        manager: apt
+        
+      # IntelliJ Idea Ultimate
+    - name: Install IntelliJ Idea 
+      snap: 
+        name: intellij-idea-ultimate
+        classic: yes
+    
