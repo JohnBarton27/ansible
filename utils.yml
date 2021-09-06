@@ -30,4 +30,9 @@
       apt:
         name: snapd
         state: present
+        
+    - name: Install pip
+      apt:
+        name: pip
+        state: present
 
