@@ -1,0 +1,30 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Dependencies
+      apt:
+        name: "{{ item }}"
+        state: present
+      ignore_errors:  yes
+      loop:
+        - python3-pip
+        - python3-setuptools
+        - libudev-dev
+        - libusb-1.0.0-dev
+        - libhidapi-libusb0
+        - libjpeg-dev
+        - zlib1g-dev
+        - libopenjp2-7
+        - libtiff5
+
+    - name: Add udev rule
+      lineinfile:
+        dest: /etc/udev/rules.d/10-streamdeck.rules
+        line: SUBSYSTEMS=="usb", ATTRS{idVendor}=="0fd9", GROUP="users", TAG+="uaccess"
+        owner: root
+        state: present
+        insertafter: EOF
+        create: True
+        
+    - name: Reload udev rules
+      raw: udevadm control --reload-rules
