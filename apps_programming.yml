@@ -10,4 +10,8 @@
       snap: 
         name: intellij-idea-ultimate
         classic: yes
-    
+
+    - name: Install SQLite Browser
+      apt:
+        name: sqlitebrowser
+        state: present    
