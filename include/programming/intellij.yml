@@ -1,0 +1,6 @@
+# This file is meant to be included via an 'include_tasks' task in a 'parent' playbook.
+
+- name: Install IntelliJ Idea 
+  snap: 
+    name: intellij-idea-ultimate
+    classic: yes

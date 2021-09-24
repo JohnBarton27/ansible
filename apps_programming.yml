@@ -5,13 +5,8 @@
       package_facts:
         manager: apt
         
-      # IntelliJ Idea Ultimate
-    - name: Install IntelliJ Idea 
-      snap: 
-        name: intellij-idea-ultimate
-        classic: yes
+    - name: Include IntelliJ Idea Ultimate tasks
+      include_tasks: include/programming/intellij.yml
 
-    - name: Install SQLite Browser
-      apt:
-        name: sqlitebrowser
-        state: present    
+    - name: Include SQLite Browser tasks
+      include_tasks: include/programming/sqlite_browser.yml
