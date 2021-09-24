@@ -1,3 +1,6 @@
+# This file is meant to be included via an 'include_tasks' task in a 'parent' playbook.
+# Assumes apt's 'package_facts' task has been run earlier
+
 - name: Download Steam Installer
   get_url:
     url: https://steamcdn-a.akamaihd.net/client/installer/steam.deb

@@ -1,5 +1,6 @@
 # This file is meant to be included via an 'include_tasks' task in a 'parent' playbook.
 # Assumes apt's 'package_facts' task has been run earlier
+
 - name: Add Enpass repo
   raw: echo "deb https://apt.enpass.io/ stable main" > /etc/apt/sources.list.d/enpass.list
   when: '"enpass" not in ansible_facts.packages'

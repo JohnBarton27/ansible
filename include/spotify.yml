@@ -1,3 +1,6 @@
+# This file is meant to be included via an 'include_tasks' task in a 'parent' playbook.
+# Assumes apt's 'package_facts' task has been run earlier
+
 - name: Add Spotify Public Key
   raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
   when: '"spotify-client" not in ansible_facts.packages'
