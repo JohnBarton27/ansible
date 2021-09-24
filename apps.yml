@@ -19,9 +19,6 @@
     - name: Include Spotify tasks
       include_tasks: include/spotify.yml
         
-      # VS Code
-    - name: Install Visual Studio Code
-      snap:
-        name: code
-        classic: yes
+    - name: Include Visual Studio Code tasks
+      include_tasks: include/vs_code.yml
     
