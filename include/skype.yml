@@ -1,0 +1,16 @@
+- name: Download Skype Installer
+  get_url: 
+    url: https://go.skype.com/skypeforlinux-64.deb
+    dest: /tmp/skypeforlinux-64.deb
+    mode: '755'
+  when: '"skypeforlinux" not in ansible_facts.packages'
+
+- name: Install Skype
+  raw: dpkg -i /tmp/skypeforlinux-64.deb
+  when: '"skypeforlinux" not in ansible_facts.packages'
+  
+- name: Remove Skype Installer
+  file:
+    path: /tmp/skypeforlinux-64.deb
+    state: absent
+  when: '"skypeforlinux" not in ansible_facts.packages'

@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: Gather package facts
+    package_facts:
+      manager: apt
+
+  - name: Include Skype tasks
+    include_tasks: ../include/skype.yml
