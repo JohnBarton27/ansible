@@ -13,30 +13,8 @@
     - name: Include Skype tasks
       include_tasks: include/skype.yml
         
-      # STEAM
-    - name: Download Steam Installer
-      get_url:
-        url: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
-        dest: /tmp/steam.deb
-        mode: '755'
-      when: '"steam-launcher" not in ansible_facts.packages'
-      
-    - name: Install Steam
-      raw: dpkg -i /tmp/steam.deb
-      when: '"steam-launcher" not in ansible_facts.packages'
-      
-    - name: Remove Steam Installer
-      file:
-        path: /tmp/steam.deb
-        state: absent
-      when: '"steam-launcher" not in ansible_facts.packages'
-
-    - name: Install Steam Deps
-      apt:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - steam-libs-amd64
+    - name: Include Steam tasks
+      include_tasks: include/steam.yml
     
       # SPOTIFY
     - name: Add Spotify Public Key
