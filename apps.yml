@@ -21,4 +21,7 @@
         
     - name: Include Visual Studio Code tasks
       include_tasks: include/apps/vs_code.yml
+
+    - name: Include Zoom tasks
+      include_tasks: include/apps/zoom.yml
     

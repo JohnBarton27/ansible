@@ -5,29 +5,6 @@
       package_facts:
         manager: apt
 
-    - name: Download Zoom Installer
-      get_url:
-         url: https://zoom.us/client/latest/zoom_amd64.deb
-         dest: /tmp/zoom_amd64.deb
-         mode: '755'
-      when: '"zoom" not in ansible_facts.packages'
-
-    - name: Install Zoom dependencies
-      apt:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - libegl1-mesa
-        - libgl1-mesa-glx
-        - libxcb-xinerama0
-        - libxcb-xtest0
-         
-    - name: Install Zoom
-      raw: dpkg -i /tmp/zoom_amd64.deb
-      when: '"zoom" not in ansible_facts.packages'
-      
-    - name: Remove Zoom Installer
-      file:
-        path: /tmp/zoom_amd64.deb
-        state: absent
+    - name: Include Zoom tasks
+      include_tasks: ../include/apps/zoom.yml
 
