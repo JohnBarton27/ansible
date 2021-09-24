@@ -16,23 +16,8 @@
     - name: Include Steam tasks
       include_tasks: include/steam.yml
     
-      # SPOTIFY
-    - name: Add Spotify Public Key
-      raw: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -      
-      when: '"spotify-client" not in ansible_facts.packages'
-
-    - name: Add Spotify as apt source
-      raw: echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
-      when: '"spotify-client" not in ansible_facts.packages'
-      
-    - name: Apt Update (Spotify)
-      raw: apt update -y || true
-      when: '"spotify-client" not in ansible_facts.packages'
-    
-    - name: Install Spotify
-      apt:
-        name: spotify-client
-        state: present
+    - name: Include Spotify tasks
+      include_tasks: include/spotify.yml
         
       # VS Code
     - name: Install Visual Studio Code
