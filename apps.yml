@@ -1,13 +1,11 @@
 ---
+- import_playbook: apps/enpass.yml
+
 - hosts: all
   tasks:
     - name: Gather package facts
       package_facts:
         manager: apt
-
-    - name: Include Enpass
-      include_tasks:
-        file: apps/enpass.yml
 
       # SKYPE
     - name: Download Skype Installer
