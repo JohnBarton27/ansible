@@ -7,6 +7,9 @@
       package_facts:
         manager: apt
 
+    - name: Include Enpass tasks
+      include_tasks: include/enpass.yml
+      
       # SKYPE
     - name: Download Skype Installer
       get_url: 
