@@ -83,4 +83,10 @@
       apt:
         name: spotify-client
         state: present
+        
+      # VS Code
+    - name: Install Visual Studio Code
+      snap:
+        name: code
+        classic: yes
     
