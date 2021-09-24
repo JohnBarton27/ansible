@@ -1,27 +1,16 @@
 ---
-- import_playbook: apps/enpass.yml
-
 - hosts: all
   tasks:
     - name: Gather package facts
       package_facts:
         manager: apt
 
-    - name: Include Enpass tasks
-      include_tasks: include/apps/enpass.yml
-      
-    - name: Include Skype tasks
-      include_tasks: include/apps/skype.yml
-        
-    - name: Include Steam tasks
-      include_tasks: include/apps/steam.yml
-    
-    - name: Include Spotify tasks
-      include_tasks: include/apps/spotify.yml
-        
-    - name: Include Visual Studio Code tasks
-      include_tasks: include/apps/vs_code.yml
-
-    - name: Include Zoom tasks
-      include_tasks: include/apps/zoom.yml
-    
+    - name: Include Apps tasks
+      include_tasks: include/apps/{{ item }}.yml
+      loop:
+        - enpass
+        - skype
+        - steam
+        - spotify
+        - vs_code
+        - zoom
