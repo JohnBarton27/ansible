@@ -8,17 +8,17 @@
         manager: apt
 
     - name: Include Enpass tasks
-      include_tasks: include/enpass.yml
+      include_tasks: include/apps/enpass.yml
       
     - name: Include Skype tasks
-      include_tasks: include/skype.yml
+      include_tasks: include/apps/skype.yml
         
     - name: Include Steam tasks
-      include_tasks: include/steam.yml
+      include_tasks: include/apps/steam.yml
     
     - name: Include Spotify tasks
-      include_tasks: include/spotify.yml
+      include_tasks: include/apps/spotify.yml
         
     - name: Include Visual Studio Code tasks
-      include_tasks: include/vs_code.yml
+      include_tasks: include/apps/vs_code.yml
     

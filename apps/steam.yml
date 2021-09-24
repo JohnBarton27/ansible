@@ -5,4 +5,4 @@
       manager: apt
 
   - name: Include Steam tasks
-    include_tasks: ../include/steam.yml
+    include_tasks: ../include/apps/steam.yml

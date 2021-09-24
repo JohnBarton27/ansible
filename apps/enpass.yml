@@ -5,4 +5,4 @@
       manager: apt
 
   - name: Include Enpass tasks
-    include_tasks: ../include/enpass.yml
+    include_tasks: ../include/apps/enpass.yml
