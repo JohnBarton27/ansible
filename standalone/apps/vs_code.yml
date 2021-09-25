@@ -1,4 +1,4 @@
 - hosts: all
   tasks:
   - name: Include Visual Studio code tasks
-    include_tasks: ../include/apps/vs_code.yml
+    include_tasks: ../../include/apps/vs_code.yml

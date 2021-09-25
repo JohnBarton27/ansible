@@ -1,4 +1,4 @@
 - hosts: all
   tasks:
   - name: Include IntelliJ Idea Ultimate tasks
-    include_tasks: ../include/programming/intellij.yml
+    include_tasks: ../../include/programming/intellij.yml

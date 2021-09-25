@@ -6,5 +6,5 @@
         manager: apt
 
     - name: Include Zoom tasks
-      include_tasks: ../include/apps/zoom.yml
+      include_tasks: ../../include/apps/zoom.yml
 

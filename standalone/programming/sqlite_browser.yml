@@ -1,4 +1,4 @@
 - hosts: all
   tasks:
   - name: Include SQLite Browser tasks
-    include_tasks: ../include/programming/sqlite_browser.yml
+    include_tasks: ../../include/programming/sqlite_browser.yml

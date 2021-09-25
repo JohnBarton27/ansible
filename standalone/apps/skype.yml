@@ -5,4 +5,4 @@
       manager: apt
 
   - name: Include Skype tasks
-    include_tasks: ../include/apps/skype.yml
+    include_tasks: ../../include/apps/skype.yml
