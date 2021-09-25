@@ -1,0 +1,26 @@
+# This file is meant to be included via an 'include_tasks' task in a 'parent' playbook.
+# Assumes apt's 'package_facts' task has been run earlier
+
+- name: Install Angry IP Scanner Deps
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - openjdk-8-jdk
+
+- name: Download Angry IP Scanner Installer
+  get_url:
+    url: https://github.com/angryip/ipscan/releases/download/3.7.6/ipscan_3.7.6_all.deb
+    dest: /tmp/ipscan_all.deb
+    mode: '755'
+  when: '"ipscan" not in ansible_facts.packages'
+  
+- name: Install Angry IP Scanner
+  raw: dpkg -i /tmp/ipscan_all.deb
+  when: '"ipscan" not in ansible_facts.packages'
+  
+- name: Remove Angry IP Scanner Installer
+  file:
+    path: /tmp/ipscan_all.deb
+    state: absent
+  when: '"ipscan" not in ansible_facts.packages'

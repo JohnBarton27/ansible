@@ -8,6 +8,7 @@
     - name: Include Apps tasks
       include_tasks: include/apps/{{ item }}.yml
       loop:
+        - angry_ip
         - enpass
         - skype
         - steam

@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: Gather package facts
+    package_facts:
+      manager: apt
+
+  - name: Include Angry IP Scanner tasks
+    include_tasks: ../../include/apps/angry_ip.yml
