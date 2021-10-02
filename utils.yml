@@ -40,3 +40,7 @@
       snap:
         name: starship
 
+    - name: Install ffmpeg
+      apt:
+        name: ffmpeg
+        state: present
